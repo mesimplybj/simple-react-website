@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import DataService  from '../../Services/DataService';
+import {Constants} from '../../Entities/Constants';
 import PortFolioList from './PortfolioList';
-function Portfolio({ props }) {
+
+//Constants
+
+function Portfolio() {
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [props, setItems] = useState([]); 
+  useEffect(() => {
+      DataService.GetGenericCall(setItems,setError,setIsLoaded,Constants.Section_Portfolio);
+    }, []);
+
+
   return (
     <section id="work" class="portfolio-mf sect-pt4 route">
       <div class="container">
@@ -11,14 +25,14 @@ function Portfolio({ props }) {
                 Portfolio
               </h3>
               <p class="subtitle-a">
-                {props.SubTitle}
+                {props?.subTitle}
               </p>
               <div class="line-mf"></div>
             </div>
           </div>
         </div>
         <div class="row">
-          <PortFolioList portfolioList={props.PortfolioList} />
+          <PortFolioList portfolioList={props?.portfolioList} />
         </div>
       </div>
     </section>

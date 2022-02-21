@@ -1,6 +1,22 @@
+import React, { useState, useEffect } from "react"
+
 function Header() {
+  const [navbar, setNavbar] = useState(false)
+  const changeBackground = () => {
+    console.log(window.scrollY)
+    if (window.scrollY >= 66) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+  useEffect(() => {
+    changeBackground();
+    // adding the event when scroll change Logo
+    window.addEventListener("scroll", changeBackground);
+  })
     return (
-        <header id="header" className="fixed-top">
+        <header id="header" className={navbar ? "fixed-top header-scrolled" : "fixed-top"}>
           <div className="container d-flex align-items-center justify-content-between">      
             <h1 className="logo"><a href="index.html">DevFolio</a></h1>
             <nav id="navbar" className="navbar">

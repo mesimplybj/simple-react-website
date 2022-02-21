@@ -1444,3 +1444,19 @@ footer .credits {
 footer .credits a {
   color: #fff;
 }
+
+.heroSectionText{
+height: 100px;
+}
+
+.react-slideshow-container + ul.indicators li{
+  margin-left:10px !important ;
+}
+.react-slideshow-container + ul.indicators .each-slideshow-indicator::before {
+  background-color: #fff !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+.each-slideshow-indicator active{
+  opacity: 1 !important;
+}
