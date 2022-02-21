@@ -4,12 +4,12 @@ export default function PortFolioList({ portfolioList }) {
     return (
         <>
             {
-                portfolioList.map((portfolio, index) =>
+                portfolioList?.map((portfolio, index) =>
                     <div class="col-md-4">
                         <div class="work-box">
                             <a href="assets/img/work-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
                                 <div class="work-img">
-                                    <img src={portfolio.Image} alt="" class="img-fluid" />
+                                    <img src={portfolio.image} alt="" class="img-fluid" />
                                 </div>
                             </a>
                             <div class="work-content">
@@ -17,7 +17,7 @@ export default function PortFolioList({ portfolioList }) {
                                     <div class="col-sm-8">
                                         <h2 class="w-title">{portfolio.ProjectName}</h2>
                                         <div class="w-more">
-                                            <span class="w-ctegory">{portfolio.Tag}</span> / <span class="w-date">{portfolio.Date}</span>
+                                            <span class="w-ctegory">{portfolio.tag}</span> / <span class="w-date">{portfolio.date}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">

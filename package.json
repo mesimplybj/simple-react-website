@@ -5,8 +5,12 @@
   "dependencies": {
     "cra-template": "1.1.2",
     "react": "^17.0.2",
+    "react-countup": "^6.1.1",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "react-slideshow-image": "^3.7.0",
+    "react-type-animation": "^1.1.2",
+    "react-visibility-sensor": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

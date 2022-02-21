@@ -1,18 +1,19 @@
-import React from 'react';
-function About({ props }) {
-    const skills = props.Skills.map((skill, index) =>
-        <>
-            <span>{skill.Skill}</span> <span className="pull-right">{skill.Percentage}%</span>
-            <div className="progress">
-                <div className="progress-bar" role="progressbar" style={{ 'width': skill.Percentage +'%' }}></div>
-            </div>
-        </>
-    )
-    const aboutme = props.AboutMe.map((about, index) =>
-            <p className="lead">
-                {about}
-            </p>
-    )
+import React, { useState, useEffect, useRef } from 'react';
+import DataService from '../../Services/DataService';
+import { AboutUs } from '../../Entities/Response';
+
+function About() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [props, setItems] = useState({});
+    useEffect(() => {
+        //console.log(AboutUs);
+        setItems(AboutUs);
+        DataService.GetAbout(setItems, setError, setIsLoaded);
+    }, []);
+
+
+
     return (
         <section id="about" className="about-mf sect-pt4 route">
             <div className="container">
@@ -24,21 +25,30 @@ function About({ props }) {
                                     <div className="row">
                                         <div className="col-sm-6 col-md-5">
                                             <div className="about-img">
-                                                <img src={props.Image} className="img-fluid rounded b-shadow-a" alt="" />
+                                                <img src={props.image} className="img-fluid rounded b-shadow-a" alt="" />
                                             </div>
                                         </div>
                                         <div className="col-sm-6 col-md-7">
                                             <div className="about-info">
-                                                <p><span className="title-s">Name: </span> <span>{props.Name}</span></p>
-                                                <p><span className="title-s">Profile: </span> <span>{props.Profile}</span></p>
-                                                <p><span className="title-s">Email: </span> <span>{props.Email}</span></p>
-                                                <p><span className="title-s">Phone: </span> <span>{props.Phone}</span></p>
+                                                <p><span className="title-s">Name: </span> <span>{props.name}</span></p>
+                                                <p><span className="title-s">Profile: </span> <span>{props.profile}</span></p>
+                                                <p><span className="title-s">Email: </span> <span>{props.email}</span></p>
+                                                <p><span className="title-s">Phone: </span> <span>{props.phone}</span></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="skill-mf">
                                         <p className="title-s">Skill</p>
-                                        {skills}
+                                        {
+                                            props?.skills?.map((skill, index) => {
+                                                return <div>
+                                                    <span>{skill.skill}</span> <span className="pull-right">{skill.percentage}%</span>
+                                                    <div className="progress">
+                                                        <div className="progress-bar" role="progressbar" style={{ 'width': skill.percentage + '%' }}></div>
+                                                    </div>
+                                                </div>
+                                            })}
+
                                     </div>
                                 </div>
                                 <div className="col-md-6">
@@ -48,7 +58,13 @@ function About({ props }) {
                                                 About me
                                             </h5>
                                         </div>
-                                        {aboutme}
+                                        {
+                                            props?.aboutMe?.map((about, index) => {
+                                                return (<p className="lead">
+                                                    {about}
+                                                </p>)
+                                            })
+                                        }
                                     </div>
                                 </div>
                             </div>
