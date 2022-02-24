@@ -1,5 +1,5 @@
 import React from 'react';
-import contactBG from '../../assets/img/overlay-bg.jpg';
+import contactBG from '../../../assets/img/overlay-bg.jpg';
 
 function Contact(props) {
     return (
