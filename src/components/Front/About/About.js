@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import DataService from '../../Services/DataService';
-import { AboutUs } from '../../Entities/Response';
+import React, { useState, useEffect} from 'react';
+import DataService from '../../../Services/DataService';
+import { AboutUs } from '../../../Entities/Response';
 
 function About() {
     const [error, setError] = useState(null);
@@ -11,9 +11,6 @@ function About() {
         setItems(AboutUs);
         DataService.GetAbout(setItems, setError, setIsLoaded);
     }, []);
-
-
-
     return (
         <section id="about" className="about-mf sect-pt4 route">
             <div className="container">

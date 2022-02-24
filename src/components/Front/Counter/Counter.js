@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import DataService  from '../../Services/DataService';
-import {Constants} from '../../Entities/Constants';
+import DataService  from '../../../Services/DataService';
+import {Constants} from '../../../Entities/Constants';
 import CounterList from './CounterList';
 
 function Counter() {

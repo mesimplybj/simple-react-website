@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataService  from '../../Services/DataService';
+import DataService  from '../../../Services/DataService';
 import TypeAnimation from 'react-type-animation';
 
 function HeroSection() {  
